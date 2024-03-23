@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\State;
 
 class StateController extends Controller
 {
@@ -12,6 +13,9 @@ class StateController extends Controller
     public function index()
     {
         //
+
+        
+        
     }
 
     /**
@@ -20,6 +24,9 @@ class StateController extends Controller
     public function create()
     {
         //
+        return view('states.create');
+        
+       
     }
 
     /**
@@ -27,7 +34,17 @@ class StateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $name = $request->input('name');
+        $state=new State;
+        $state->name=$name;
+        $state->save();
+
+        return redirect()->route('states.index');
+
+        
+    
+   
     }
 
     /**
@@ -36,6 +53,7 @@ class StateController extends Controller
     public function show(string $id)
     {
         //
+       
     }
 
     /**
